@@ -5,13 +5,12 @@ interface WeatherData {
   list: {
     dt: number;
     main: {
-      temperature: number;
+      temp: number;
       humidity: number;
     };
     wind: {
       speed: number;
     };
-    timezone: number;
     weather: {
       icon: string;
       description: string;
@@ -52,8 +51,8 @@ class Weather {
 class WeatherService {
   // Define the baseURL, API key, and city name properties
   private baseURL?: string;
-  private cityName = '';
   private apiKey?: string;
+  private cityName = '';
   
   constructor() {
     this.baseURL = process.env.API_BASE_URL || '';
@@ -65,7 +64,7 @@ class WeatherService {
     try {
       if (!this.baseURL || !this.apiKey) {
         throw new Error('Invalid query');
-      }else{
+      } {
         return await fetch(query).then((response) => response.json());
       }
     } catch (error) {
@@ -82,8 +81,7 @@ class WeatherService {
     const coordinates: Coordinates = {
      name,
      lat,
-     lon,
-      
+     lon, 
     };
     return coordinates;
   }
@@ -100,7 +98,8 @@ class WeatherService {
 
   // Create fetchAndDestructureLocationData method
   private async fetchAndDestructureLocationData() {
-    return await this.fetchLocationData(this.buildGeocodeQuery()).then((data) => this.destructureLocationData(data as Coordinates));
+    return await this.fetchLocationData(this.buildGeocodeQuery()).then((data) => 
+      this.destructureLocationData(data as Coordinates));
   }
 
   // Create fetchWeatherData method
@@ -173,4 +172,4 @@ class WeatherService {
   }
 }
 
-export default new WeatherService;
+export default WeatherService;

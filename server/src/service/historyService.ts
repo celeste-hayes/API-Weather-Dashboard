@@ -15,7 +15,7 @@ class City {
   class HistoryService {
   private async read(): Promise<City[]> {
     try {
-      const data = await fs.readFile('db/searchHistory.json','utf-8');
+      const data = await fs.readFile('db/searchHistory.json', 'utf-8');
       const cities: City[] = JSON.parse(data);
       return cities;
     } catch (error) {
@@ -27,7 +27,7 @@ class City {
   // Define a write method that writes the updated cities array to the searchHistory.json file
   private async write(cities: City[]): Promise<void> {
     try {
-      await fs.writeFile('db/searchHistory.json', JSON.stringify(cities,null,2));
+      await fs.writeFile('db/searchHistory.json', JSON.stringify(cities, null, 2));
     } catch (error) {
       console.error('Issue writing search history:', error);
       throw error;
@@ -51,7 +51,7 @@ class City {
   // * BONUS TODO: Define a removeCity method that removes a city from the searchHistory.json file
   async removeCity(id: string): Promise<void> {
     const cities = await this.read();
-    const updatedCities = cities.filter(city => city.id !== id);
+    const updatedCities = cities.filter((city: City) => city.id !== id);
     await this.write(updatedCities);
   }
 }
