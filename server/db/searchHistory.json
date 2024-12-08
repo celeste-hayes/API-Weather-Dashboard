@@ -2,5 +2,17 @@
   {
     "name": "Kansas City",
     "id": "1"
+  },
+  {
+    "name": "Malvern",
+    "id": "2"
+  },
+  {
+    "name": "Phoenix",
+    "id": "3"
+  },
+  {
+    "name": "San Diego",
+    "id": "4"
   }
 ]
